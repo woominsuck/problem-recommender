@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="문제 은행 추천 엔진">
+  <title>문제 은행 추천 엔진</title>
+  <rect width="64" height="64" rx="12" fill="#1B2A38"/>
+  <!-- 엔트로피 게이지: 왼쪽은 남은 불확실성(해칭), 오른쪽은 확보한 정보(실선) -->
+  <defs>
+    <pattern id="h" width="6" height="6" patternTransform="rotate(-45)" patternUnits="userSpaceOnUse">
+      <rect width="6" height="6" fill="#1B2A38"/>
+      <rect width="3" height="6" fill="#41566B"/>
+    </pattern>
+  </defs>
+  <rect x="10" y="21" width="20" height="9" rx="1.5" fill="url(#h)" stroke="#41566B" stroke-width="1.5"/>
+  <rect x="30" y="21" width="24" height="9" rx="1.5" fill="#3E86DB"/>
+  <!-- 눈금 -->
+  <g fill="#8496A5">
+    <rect x="10" y="34" width="1.5" height="4"/>
+    <rect x="21" y="34" width="1.5" height="4"/>
+    <rect x="32" y="34" width="1.5" height="4"/>
+    <rect x="43" y="34" width="1.5" height="4"/>
+    <rect x="53" y="34" width="1.5" height="4"/>
+  </g>
+  <!-- 추천 결과 3줄 -->
+  <g fill="#EDF0F3">
+    <rect x="10" y="44" width="44" height="3" rx="1.5"/>
+    <rect x="10" y="50" width="33" height="3" rx="1.5" opacity="0.62"/>
+    <rect x="10" y="56" width="22" height="3" rx="1.5" opacity="0.36"/>
+  </g>
+</svg>

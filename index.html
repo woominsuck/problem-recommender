@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+
+<title>문제 은행 추천 엔진 — 나에게 맞는 문제 찾기</title>
+<meta name="description" content="질문 네 개 이내로 문제 은행을 좁혀 나에게 맞는 문항 다섯 개를 추천합니다. TF-IDF 코사인 유사도, 정보 이득, MMR, Rocchio 피드백을 사용합니다.">
+<meta name="author" content="알고리즘 기반 문제해결 프로젝트">
+<meta name="theme-color" content="#1B2A38">
+
+<!-- 링크 공유 미리보기 -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="문제 은행 추천 엔진">
+<meta property="og:description" content="질문 네 개 이내로 114개 문항을 좁혀 나에게 맞는 다섯 개를 추천합니다.">
+<meta property="og:image" content="icon.svg">
+<meta name="twitter:card" content="summary">
+
+<!-- 아이콘 -->
+<link rel="icon" type="image/svg+xml" href="icon.svg">
+<link rel="apple-touch-icon" href="icon.svg">
+<link rel="manifest" href="manifest.webmanifest">
+
+<!-- 웹폰트 (차단되거나 오프라인이면 시스템 폰트로 대체됨) -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<div class="shell">
+
+  <header class="top">
+    <h1>문제 은행 추천 엔진</h1>
+    <span class="sub" id="subline">고급수학 · 문제 114개</span>
+    <button class="ghost" id="btnDrawer" aria-pressed="false">내부 보기</button>
+    <button class="ghost" id="btnReset">처음으로</button>
+  </header>
+
+  <div class="panel">
+    <div class="row">
+      <div class="readout">
+        <span class="k">후보 문제</span>
+        <span class="v num" id="roCand">114</span>
+      </div>
+      <div class="readout">
+        <span class="k">남은 불확실성</span>
+        <span class="v num" id="roEnt">6.83<small> bit</small></span>
+      </div>
+      <div class="readout">
+        <span class="k">지금까지 얻은 정보</span>
+        <span class="v num" id="roGain">0.00<small> bit</small></span>
+      </div>
+      <div class="gauge">
+        <div class="gtrack" aria-hidden="true">
+          <i class="gfill" id="gfill" style="width:100%"></i>
+          <b class="gmark" id="gmark" style="left:100%"></b>
+        </div>
+        <div class="gticks" id="gticks" aria-hidden="true"></div>
+        <div class="cap" id="gaugeCap">가로축은 남은 후보 수입니다</div>
+      </div>
+    </div>
+  </div>
+
+  <main class="stage" id="stage"></main>
+
+</div>
+
+<div class="scrim" id="scrim"></div>
+<aside class="drawer" id="drawer" aria-hidden="true">
+  <div class="dh">
+    <h2>알고리즘 내부</h2>
+    <button class="ghost" id="btnClose">닫기</button>
+  </div>
+  <div class="dbody" id="dbody"></div>
+</aside>
+<script src="assets/data.js"></script>
+<script src="assets/algorithm.js"></script>
+<script src="assets/app.js"></script>
+<script>
+  /* 서비스 워커 등록 — 두 번째 방문부터 오프라인에서도 열린다.
+     https 또는 localhost에서만 동작하고, file:// 로 열면 조용히 건너뛴다. */
+  if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+    window.addEventListener('load', function () {
+      navigator.serviceWorker.register('sw.js').catch(function () { /* 무시 */ });
+    });
+  }
+</script>
+</body>
+</html>

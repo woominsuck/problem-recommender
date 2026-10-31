@@ -1,0 +1,15 @@
+{
+  "name": "문제 은행 추천 엔진",
+  "short_name": "문제 추천",
+  "description": "질문 네 개 이내로 문제 은행을 좁혀 나에게 맞는 문항 다섯 개를 추천합니다.",
+  "lang": "ko",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#EDF0F3",
+  "theme_color": "#1B2A38",
+  "icons": [
+    { "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
